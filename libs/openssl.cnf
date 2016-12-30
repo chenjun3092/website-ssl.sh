@@ -79,7 +79,7 @@ emailAddress               = optional
 
 ####################################################################
 [ req ]
-default_bits               = 1024
+default_bits               = 2048 
 default_keyfile            = privkey.pem
 distinguished_name         = req_distinguished_name
 attributes                 = req_attributes
@@ -87,32 +87,32 @@ x509_extensions = v3_ca # The extentions to add to the self signed cert
 
 [ req_distinguished_name ]
 countryName                        = Country Name (2 letter code)
-countryName_default                = CA
+countryName_default                = CN
 countryName_min                    = 2
 countryName_max                    = 2
 
 stateOrProvinceName                = State or Province Name (full name)
-stateOrProvinceName_default    = Quebec
+stateOrProvinceName_default    = GuangDong
 
 localityName                       = Locality Name (eg, city)
-localityName_default               = Montreal
+localityName_default               = ShenZhen
 
 0.organizationName                 = Organization Name (eg, company)
-0.organizationName_default         = Open Network Architecture
+0.organizationName_default         = Cloudsoar Networks Inc.
 
 # we can do this but it is not needed normally :-)
 #1.organizationName                = Second Organization Name (eg, company)
 #1.organizationName_default    = World Wide Web Pty Ltd
 
 organizationalUnitName             = Organizational Unit Name (eg, section)
-organizationalUnitName_default = Internet Department
+organizationalUnitName_default = YourunCloud 
 
 commonName                         = Common Name (eg, YOUR name)
-commonName_default                 = www.openna.com
+commonName_default                 = test.youruncloud.com 
 commonName_max                     = 64
 
 emailAddress                       = Email Address
-emailAddress_default               = admin@openna.com
+emailAddress_default               = chenjun3092@163.com
 emailAddress_max                   = 40
 
 # SET-ex3                          = SET extension number 3

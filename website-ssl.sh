@@ -26,11 +26,12 @@ function install_config(){
 
 # ************************ 配置区域 START ******************************
 # 你的ssl主目录位置
-ssl_dir="/home/work/www/ssl"
+local=`pwd`
+ssl_dir="${local}/www/ssl"
 # nginx中配置的，给 Let's Encrypt 验证用的
-challenges_dir="/home/work/www/challenges/"
+challenges_dir="${local}/www/challenges/"
 # 按照你的需求进行配置，多个域名用空格分开
-websites="your-website.com www.your-website.com"
+websites="test.youruncloud.com"
 # ************************ 配置区域 END ********************************
 EOF
 }
@@ -68,7 +69,7 @@ function init(){
 
     # 检查openssl.cnf文件是否存在，不存在则下载一个过来
     if [[ ! -f $openssl_cnf ]];then
-        cp libs/openssl.cnf /etc/ssl/
+        cp /home/chenjun/website-ssl.sh/libs/openssl.cnf /etc/ssl/
     fi
 }
 
@@ -95,7 +96,7 @@ function create_pem(){
     fi
 
     # 申请证书crt文件
-    python libs/acme_tiny.py --account-key account.key --csr domain.csr --acme-dir $challenges_dir > signed.crt
+    python /home/chenjun/website-ssl.sh/libs/acme_tiny.py --account-key account.key --csr domain.csr --acme-dir $challenges_dir > signed.crt
     # 下载Let’s Encrypt 的中间证书
     curl -so lets-signed.pem https://letsencrypt.org/certs/lets-encrypt-x1-cross-signed.pem
     # 俩证书合并，得到最终pem文件
